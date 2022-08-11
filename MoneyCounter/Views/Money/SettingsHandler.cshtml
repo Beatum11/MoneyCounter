@@ -1,0 +1,32 @@
+﻿@model MoneyHandler;
+
+<h1>Settings</h1>
+<hr />
+
+<div class="row">
+    <div class="col-6">
+
+        <div class="card">
+
+            <div class="card-body">
+
+                <form asp-controller="Money" asp-action="SettingsEdit" method="post">
+                    <div class="mb-3">
+                        <label class="form-label">How many $$$ do you need?</label>
+                        <input type="number" asp-for="Limit" class="form-control" />
+                    </div>
+                    
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+
+                 </div>
+
+            <div class="card-footer">
+
+            </div>
+
+        </div>
+    </div>
+</div>

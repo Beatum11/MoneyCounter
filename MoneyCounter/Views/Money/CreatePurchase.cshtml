@@ -1,0 +1,58 @@
+﻿@model NoteModel;
+
+
+<h1>Add a new Purchase</h1>
+<hr />
+
+<div class="row">
+    <div class="col-6">
+
+        <div class="card">
+
+            <div class="card-header">
+                <h5>Write what you bought today:</h5>
+            </div>
+
+            <div class="card-body">
+
+                <form asp-controller="Money" asp-action="AddPurchase" method="post">
+
+                    <div class="mb-3">
+                        <div class="form-group">
+                        <label class="form-label">Choose a Theme:</label>
+                        <select asp-for="Theme" class="form-control">
+                          <option>Food</option>
+                          <option>Finance</option>
+                          <option>Medicine</option>
+                           <option>Rent</option>
+                          <option>Fun</option>
+                          <option>Other</option>
+                        </select>
+                      </div>
+                    </div>
+                     
+
+                    <div class="mb-3">
+                        <label class="form-label">How much you spend:</label>
+                        <input asp-for="Spending" type="number" class="form-control" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Write a date:</label>
+                        <input asp-for="Date" type="date" class="form-control" />
+                    </div>
+                    
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+
+                 </div>
+
+            <div class="card-footer">
+
+            </div>
+
+        </div>
+    </div>
+</div>

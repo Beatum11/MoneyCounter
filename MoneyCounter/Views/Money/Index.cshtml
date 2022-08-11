@@ -1,0 +1,215 @@
+﻿@model dynamic
+
+<html>
+    <head>
+
+        
+        <script>
+    
+            @foreach(var note in Model.notes)
+            {
+                Model.MoneyHandler.Left -= note.Spending;
+                Model.MoneyHandler.Spend += note.Spending;
+
+            }
+
+        </script>
+
+        <style>
+
+
+            .purchBut{
+                border-width:3px;
+                border-color:turquoise;
+                color:blue;
+                background-color:white;
+                padding-top: 10px; 
+                padding-bottom:10px; 
+                padding-left: 16px; 
+                padding-right: 16px;
+                border-radius:15px;
+                border-style:solid;
+                font-size:25px;
+                font-weight:bold;
+
+            }
+            .purchBut:active{
+                background-color: turquoise;
+                color:white;
+            }
+            .purchBut:hover{
+                box-shadow:5px 6px 9px yellow;
+            }
+
+        </style>
+
+    </head>
+
+    <body style="background-color:white">
+
+        
+
+
+    <div style="
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin-top: 30px;
+        height: 20vh;  
+    ">
+        <div class="card border-primary mb-1" style="width: 25rem;">
+              <div class="card-body">
+                 <div class="card-header">
+                       <h2 style="text-align:center" id="limitText"> Spend: </h2> 
+                 </div>
+                     
+                        <div class="card-text">
+                        <h2 style="text-align:center" id="limitText">
+                            @Model.MoneyHandler.Spend$
+                        </h2> 
+                  </div>
+            </div>
+           </div> 
+
+        <div class="card border-primary mb-1" style="width: 25rem;">
+              <div class="card-body">
+                 <div class="card-header">
+                       <h2 style="text-align:center" id="limitText"> Left: </h2> 
+                 </div>
+                     
+                        <div class="card-text">
+                        <h2 style="text-align:center" id="limitText">
+                            @Model.MoneyHandler.Left$
+                        </h2> 
+                  </div>
+            </div>
+           </div> 
+
+
+            <div class="card border-primary mb-1" style="width: 25rem;">
+              <div class="card-body">
+                 <div class="card-header">
+                       <h2 style="text-align:center" id="limitText"> Your Limit: </h2> 
+                 </div>
+                     
+                        <div class="card-text">
+                        <h2 style="text-align:center" id="limitText">
+                            @Model.MoneyHandler.Limit$
+                        </h2> 
+                  </div>
+            </div>
+           </div> 
+    </div>
+
+     
+
+    <div style="
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: 30px;
+        height: 15vh; 
+        text-align:center;
+    ">
+
+        
+        <div>
+            <a asp-controller="Money"
+                 asp-action="CreatePurchase">
+                <button type="submit" class="purchBut">
+                     + New Purchase 
+                </button>
+            </a>
+        </div>
+
+    </div>
+
+    <div style="display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        margin-top: 1px;
+        height: 20vh;
+        text-align:center">
+
+         <div>
+            <a asp-controller="Sorting"
+            asp-action="SortByScending">
+               <button type="button" class="purchBut" style="font-size:17px">
+                 Sort By Scending
+               </button>
+            </a>
+         </div>
+
+         <div>
+             <a asp-controller="Sorting"
+                 asp-action="SortByDescending">
+                 <button type="button" class="purchBut" style="font-size:17px">
+                     Sort By Descending 
+                </button>
+            </a>
+         </div>
+            
+         <div> 
+             <a asp-controller="Sorting"
+                 asp-action="SortByDate">
+                 <button type="button" class="purchBut" style="font-size:17px">
+                     Sort By Date 
+                </button>
+            </a>
+         </div>
+            
+         <div> 
+             <a asp-controller="Sorting"
+                 asp-action="SortByCategory">
+                 <button type="button" class="purchBut" style="font-size:17px">
+                     Sort By Category 
+                </button>
+            </a>
+         </div>
+            
+
+    </div>
+
+    <div style="
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: 5px; 
+        text-align:left;
+        margin-bottom: 10px;
+    ">
+
+        <div>
+            <ul>
+
+            @foreach(var note in Model.notes)
+            {
+                
+                   <div class="card border-info mb-sm-1" style="width: 60rem;">
+                      <div class="card-body">
+
+                        <dl>
+                            <div class="card-text">
+                                 <dt style="font-size:20px">
+                                    @note.Theme
+                                 </dt>
+                              <dd style="font-size:18px; margin-bottom:20px">
+                                  -  @note.Spending$ | @note.Date.ToShortDateString()
+                              </dd>  
+
+                            </div>
+                        </dl>
+                       </div> 
+                    </div>
+                    
+              
+            }
+            </ul>
+        </div>
+     </div>
+    </body>
+
+
+
+</html>
+
+
+
+
+
