@@ -4,7 +4,7 @@ In this project I dived a little more into:
 
 - C# | ASP.NET Core MVC | .NET 6
 - Dynamic objects
-- Razor Pages
+- Blazor
 - Bootstrap | CSS
 ________________________
 
@@ -33,6 +33,5 @@ ___________________________
 - Final look at Main Page
 ![Снимок экрана (59)](https://user-images.githubusercontent.com/106334144/184126250-8e7f9c51-5878-433a-a53d-d0b0fe7f6464.png)
 
-# I created this project in two days. 
 It was quite difficult to synchronize the spend section with the actual spending. 
 And I decided to use a simple List to store the data, because I use EF Core almost everywhere=)
